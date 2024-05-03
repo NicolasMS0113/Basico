@@ -27,7 +27,7 @@ function iniciarJuego(){
 
 function seleccionarMascotaJugador(){
     let sectionSeleccionarMascota= document.getElementById("seleccionar-ataque")
-    sectionSeleccionarMascota.style.display ='block'
+    sectionSeleccionarMascota.style.display ='flex'
 
     let sectionReiniciar =document.getElementById("Reiniciar")
     sectionReiniciar.style.display="none"
@@ -129,21 +129,30 @@ function revisarVidas() {
 
 
 function crearMensaje(resultado) {
-    let sectionMensajes = document.getElementById("Mensajes")//apuntamos la id de donde queremos que aparezca nuestro mensaje
+    let sectionMensajes = document.getElementById("resultado")//apuntamos la id de donde queremos que aparezca nuestro mensaje
+    let ataquesDelJugador = document.getElementById("ataques-del-jugador")
+    let ataquesDelEnemigo = document.getElementById("ataques-del-enemigo")
 
-    let parrafo = document.createElement('p')//creamos el elemento al cual llegara nuestro mensaje
-    parrafo.innerHTML = "tu mascota ataco con " + ataqueJugador + ", la mascota del enemigo ataco con " + ataqueEnemigo + " - " + resultado // al "p" le insertamos el texto 
+    let nuevoAtaqueDelJugador = document.createElement('p')
+    let nuevoAtaqueDelEnemigo= document.createElement('p')
+    
+    sectionMensajes.innerHTML = resultado
+    nuevoAtaqueDelJugador.innerHTML = ataqueJugador
+    nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo
 
-    sectionMensajes.appendChild(parrafo) // al id le decimos con appendchild que le vamos a insertar en este caso parrafo, que ya le insetamos el mensaje y se sabe que es de tipo "p"
+     // al id le decimos con appendchild que le vamos a insertar en este caso parrafo, que ya le insetamos el mensaje y se sabe que es de tipo "p"
+    ataquesDelJugador.appendChild(nuevoAtaqueDelJugador)
+    ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)
+
+
 }
 
 function crearMensajeFinal(resultadoFinal) {
-    let sectionMensajes = document.getElementById("Mensajes")
+    let sectionMensajes = document.getElementById("resultado")
 
-    let parrafo = document.createElement('p')
-    parrafo.innerHTML = resultadoFinal
+    sectionMensajes.innerHTML = resultadoFinal
 
-    sectionMensajes.appendChild(parrafo) 
+    // sectionMensajes.appendChild(parrafo) 
 
     
     let botonFuego = document.getElementById("boton-fuego")
